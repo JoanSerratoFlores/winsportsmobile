@@ -1,0 +1,65 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+:root {
+    --ion-color-maingreen: #81a500;
+    --ion-color-maingreen-rgb: 129, 165, 0;
+    --ion-color-maingreen-contrast: #000000;
+    --ion-color-maingreen-contrast-rgb: 0, 0, 0;
+    --ion-color-maingreen-shade: #729100;
+    --ion-color-maingreen-tint: #8eae1a;
+}
+
+.ion-color-maingreen {
+    --ion-color-base: var(--ion-color-maingreen);
+    --ion-color-base-rgb: var(--ion-color-maingreen-rgb);
+    --ion-color-contrast: var(--ion-color-maingreen-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-maingreen-contrast-rgb);
+    --ion-color-shade: var(--ion-color-maingreen-shade);
+    --ion-color-tint: var(--ion-color-maingreen-tint);
+}
+
+:root {
+    --ion-color-mainorange: #edb125;
+    --ion-color-mainorange-rgb: 237, 177, 37;
+    --ion-color-mainorange-contrast: #000000;
+    --ion-color-mainorange-contrast-rgb: 0, 0, 0;
+    --ion-color-mainorange-shade: #d19c21;
+    --ion-color-mainorange-tint: #efb93b;
+}
+
+.ion-color-mainorange {
+    --ion-color-base: var(--ion-color-mainorange);
+    --ion-color-base-rgb: var(--ion-color-mainorange-rgb);
+    --ion-color-contrast: var(--ion-color-mainorange-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-mainorange-contrast-rgb);
+    --ion-color-shade: var(--ion-color-mainorange-shade);
+    --ion-color-tint: var(--ion-color-mainorange-tint);
+}

@@ -1,0 +1,48 @@
+#fondo {
+    background: url("/assets/images/bg-about2-1024x803.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100%;
+}
+
+#username {
+    ion-item {
+        --background: #353535;
+        --border-radius: 15px;
+        --inner-box-shadow: 4px 4px;
+        --inner-padding-bottom: 4px;
+        --inner-padding-end: 4px;
+        --inner-padding-start: 4px;
+        --inner-padding-top: 4px;
+    }
+}
+
+ion-toolbar {
+    --background: #35353500;
+}
+
+ion-img {
+    display: block;
+    width: 75%;
+    height: 100%;
+    margin: auto;
+}
+
+h1 {
+    color: #edb125;
+}
+
+h2 {
+    color: #edb125;
+}
+
+@media only screen and (min-width: 600px) {
+    h1 {
+        font-size: 75px;
+    }
+    h2 {
+        font-size: 50px;
+    }
+}

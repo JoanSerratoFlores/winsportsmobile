@@ -1,0 +1,19 @@
+<ion-content>
+    <div id="background-content">
+        <ion-card *ngFor="let post of posts ">
+            <ion-card-header>
+                <ion-card-title [innerHTML]="post.title.rendered "></ion-card-title>
+                <ion-card-subtitle>{{ post.date_gmt | date }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <img [src]="post.media_url ">
+                <div [innerHTML]="post.excerpt.rendered "></div>
+                <ion-button color="maingreen" expand="full" fill="clear" [routerLink]="[ '/', 'post', post.id]" text-right>Read More...</ion-button>
+            </ion-card-content>
+        </ion-card>
+        <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMore($event)">
+            <ion-infinite-scroll-content loadingText="Loading more posts...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+</ion-content>

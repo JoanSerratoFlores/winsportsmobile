@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="maingreen" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid id="fondo">
+        <ion-row>
+            <ion-col class="ion-margin">
+                <ion-img src="/assets/images/Win-With-port-d00b_00a1.png"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-text-center">
+                <h1>WELCOME!</h1>
+            </ion-col>
+            <ion-col class="ion-text-center" size="12">
+                <h2 class="ion-no-margin">Create your account</h2>
+            </ion-col>
+        </ion-row>
+        <form [formGroup]="userForm" (ngSubmit)="signUp()">
+            <ion-row class="ion-padding-start ion-padding-top">
+                <ion-col size="2">
+                    <ion-icon color="maingreen" style="font-size: 50px;" name="person-circle-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="9" id="username">
+                    <ion-item>
+                        <ion-input formControlName="username" color="mainorange" type="text" placeholder="Username"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-padding-start">
+                <ion-col size="2">
+                    <ion-icon color="maingreen" style="font-size: 50px;" name="mail-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="9" id="username">
+                    <ion-item>
+                        <ion-input type="email" formControlName="email" color="mainorange" placeholder="Email"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-padding-start">
+                <ion-col size="2">
+                    <ion-icon color="maingreen" style="font-size: 50px;" name="lock-closed-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="9" id="username">
+                    <ion-item>
+                        <ion-input type="password" formControlName="password" color="mainorange" placeholder="Password"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-padding-top">
+                <ion-button style="margin: auto;display: block;width:fit-content;" [disabled]="!userForm.valid" color="maingreen" (click)="signUp()">
+                    Register
+                </ion-button>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>

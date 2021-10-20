@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="maingreen">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="font-family: oswald;">{{ post?.title.rendered }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="background-content">
+        <div *ngIf="post" class="ion-padding">
+            <img [src]="post.media_url" [style.width]="'100%'">
+            <div [innerHTML]="post.content.rendered" padding></div>
+        </div>
+    </div>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button color="maingreen" expand="full" fill="clear" (click)="openOriginal()">
+            Open Original
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

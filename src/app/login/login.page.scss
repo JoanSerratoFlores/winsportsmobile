@@ -1,0 +1,38 @@
+#fondo {
+    background: url("/assets/images/bg-bar-300x300.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+#username {
+    ion-item {
+        --background: #353535;
+        --border-radius: 15px;
+        --inner-box-shadow: 4px 4px;
+        --inner-padding-bottom: 4px;
+        --inner-padding-end: 4px;
+        --inner-padding-start: 4px;
+        --inner-padding-top: 4px;
+    }
+}
+
+ion-img {
+    display: block;
+    width: 75%;
+    height: 100%;
+    margin: auto;
+}
+
+@media only screen and (min-width: 600px) {
+    h1 {
+        font-size: 75px;
+    }
+    h2 {
+        font-size: 50px;
+    }
+    #link {
+        font-size: 35px;
+    }
+}

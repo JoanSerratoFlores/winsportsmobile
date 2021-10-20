@@ -1,0 +1,60 @@
+<ion-content>
+    <ion-grid id="fondo">
+        <ion-row>
+            <ion-col class="ion-margin">
+                <ion-img src="/assets/images/Win-With-port-d00b_00a1.png"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-text-center" size="12">
+                <h1 style="color: #edb125;">WELCOME BACK!</h1>
+            </ion-col>
+            <ion-col class="ion-text-center" size="12">
+                <h2 class="ion-no-margin" style="color: #edb125;">Log into your account</h2>
+            </ion-col>
+        </ion-row>
+        <form [formGroup]="userForm" (ngSubmit)="login()">
+            <ion-row class="ion-padding-start ion-padding-top">
+                <ion-col size="2">
+                    <ion-icon color="maingreen" style="font-size: 50px;" name="person-circle-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="9" id="username">
+                    <ion-item>
+                        <ion-input formControlName="username" color="mainorange" type="text" placeholder="Username"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-padding-start">
+                <ion-col size="2">
+                    <ion-icon color="maingreen" style="font-size: 50px;" name="lock-closed-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="9" id="username">
+                    <ion-item>
+                        <ion-input type="password" formControlName="password" color="mainorange" placeholder="Password"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button size="large" [disabled]="!userForm.valid" type="submit" color="maingreen" (click)="login()" style="margin: auto;display: block;width:fit-content;">
+                        <p>Sign in</p>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+        <ion-row class="ion-padding-top" id="link">
+            <ion-col size="12" class="ion-text-center">
+                <p class="ion-no-margin" style="color: white;">Dont have an account?
+                    <a href="/sign-up" style="color: #81a500;">Sign up here</a>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row id="link">
+            <ion-col size="12" class="ion-text-center">
+                <p class="ion-no-margin" style="color: white;">Forgot Password?
+                    <a href="/forgot-pass" style="color: #81a500; ">Recovery password here</a>
+                </p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
