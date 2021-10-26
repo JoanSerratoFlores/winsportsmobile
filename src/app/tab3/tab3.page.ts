@@ -1,4 +1,7 @@
+import { BehaviorSubject } from 'rxjs';
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  user = this.api.getCurrentUser();
+    
+  constructor(
+    private api: ApiService,
 
-  constructor() {}
+  ) {}
+
+  ngOnInit() {
+    
+  }
 
 }

@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
+  },
+  {
+    path: 'admin-chat',
+    loadChildren: () => import('./admin-chat/admin-chat.module').then( m => m.AdminChatPageModule)
   }
 ];
 @NgModule({

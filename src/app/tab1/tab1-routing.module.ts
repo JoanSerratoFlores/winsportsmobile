@@ -6,6 +6,21 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page,
+    children:[
+      {
+        path: 'messages',
+        loadChildren: () => import('../messages/messages.module').then( m => m.MessagesPageModule)
+      },
+      {
+        path: 'notifications',
+        loadChildren: () => import('../notifications/notifications.module').then( m => m.NotificationsPageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/tabs/tab1/messages',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 
