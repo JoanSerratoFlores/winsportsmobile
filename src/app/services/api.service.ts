@@ -1,13 +1,14 @@
-import { getTestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { environment } from '../../environments/environment';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { Storage } from '@ionic/Storage';
  
 const JWT_KEY = 'myjwtstoragekey';
+const TOKEN_KEY='user-access-token'
  
 @Injectable({
   providedIn: 'root'
@@ -17,26 +18,67 @@ export class ApiService {
   private user = new BehaviorSubject(null);
   totalpost=null;
   pages:any;
+
+  userv:Observable<any>
+  private authState=new BehaviorSubject(null);
  
-  constructor(private http: HttpClient, private storage: Storage, private plt: Platform) {
-    this.plt.ready().then(() => {
+  constructor(
+    private http: HttpClient, 
+    private storage: Storage, 
+    private plt: Platform,
+    private router:Router) {
+      
+      this.userv=this.authState.asObservable().pipe(
+        filter(response=>response)
+      )
+      this.authState.value
+      this.loadUser();
+      
+      this.plt.ready().then(() => {
       this.storage.get(JWT_KEY).then(data => {
         if (data) {
-          this.user.next(data);
+          this.user.next(data);                    
         }
       })
     })
   }
+
+  loadUser(){
+
+    this.storage.get(TOKEN_KEY).then(data=>{
+      console.log('Loaded user: ',data)
+      if(data){
+        this.authState.next(data)
+      }else{
+        this.authState.next({email:null,role:null});
+      }
+    })
+
+  }
  
-  signIn(username, password) {
+  signIn(username, password){
     return this.http.post(`${environment.apiUrl}/jwt-auth/v1/token`, { username, password }).pipe(
       switchMap(data => {
         return from(this.storage.set(JWT_KEY, data));
-      }),
+      }), 
       tap(data => {
         this.user.next(data);
       })
     );
+  }
+
+  prof(credential):Observable<any> {
+    let email=credential.email
+    let userv=null;
+
+    if(email==='winwithsports'){
+      userv={email,role:'ADMIN'}
+    }else{
+      userv={email,role:'USER'}
+    }
+    this.authState.next(userv);
+    this.storage.set(TOKEN_KEY,userv)
+    return of (userv)
   }
  
   signUp(username, email, password) {
@@ -68,10 +110,14 @@ export class ApiService {
     return this.user.getValue();
   }
  
-  logout() {
+  async logout() {
+
+    await this.storage.set(TOKEN_KEY,null)
+    this.authState.next(null)
     this.storage.remove(JWT_KEY).then(() => {
       this.user.next(null);
     });
+    this.router.navigateByUrl('/')
   }
 
   getPosts(page = 1){

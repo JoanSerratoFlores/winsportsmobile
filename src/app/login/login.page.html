@@ -20,7 +20,7 @@
                 </ion-col>
                 <ion-col size="9" id="username">
                     <ion-item>
-                        <ion-input formControlName="username" color="mainorange" type="text" placeholder="Username"></ion-input>
+                        <ion-input formControlName="username" [(ngModel)]="userv.email" color="mainorange" type="text" placeholder="Username"></ion-input>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -36,8 +36,9 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-button size="large" [disabled]="!userForm.valid" type="submit" color="maingreen" (click)="login()" style="margin: auto;display: block;width:fit-content;">
+                    <ion-button size="large" [disabled]="!userForm.valid" type="submit" color="maingreen" style="margin: auto;display: block;width:fit-content;">
                         <p>Sign in</p>
+                        <ion-spinner *ngIf="spin" name="circles"></ion-spinner>
                     </ion-button>
                 </ion-col>
             </ion-row>

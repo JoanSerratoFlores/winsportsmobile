@@ -14,6 +14,11 @@ export class LoginPage implements OnInit {
   userForm: FormGroup;
   user = this.api.getCurrentUser();
   posts = [];
+  spin=false
+
+  userv={
+    email:'',
+  }
 
   constructor(
     private api: ApiService,
@@ -27,20 +32,30 @@ export class LoginPage implements OnInit {
 
     this.userForm = this.fb.group({
       username: ['', Validators.required],
-      email: '',
       password: ['', Validators.required]
     });
 
   }
   
   login() {
+    this.spin=true;
     this.api.signIn(this.userForm.value.username, this.userForm.value.password).subscribe(
-      res => {
-        console.log("logeado")
-        this.router.navigateByUrl("/tabs")
+      userv => {
+        console.log("logeado",userv)
+        this.api.prof(this.userv).subscribe(user=>{
+          console.log('after login: ',user)
+          let role=user['role'];
+          if(role=='ADMIN'){
+            this.router.navigateByUrl('/admin-chat')
+          }else{
+            this.router.navigateByUrl('/tabs/tab1/messages')
+          }
+        })
+        this.spin=false;
       },
       err => {
         this.showError(err);
+        this.spin=false;
       }
     );
   }

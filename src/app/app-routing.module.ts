@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+    canActivate:[AuthGuard],
+    data:{
+      role:'USER'
+    }
   },
   {
     path: 'forgot-pass',
@@ -32,7 +37,11 @@ const routes: Routes = [
   },
   {
     path: 'admin-chat',
-    loadChildren: () => import('./admin-chat/admin-chat.module').then( m => m.AdminChatPageModule)
+    loadChildren: () => import('./admin-chat/admin-chat.module').then( m => m.AdminChatPageModule),
+    canActivate:[AuthGuard],
+    data:{
+      role:'ADMIN'
+    }
   }
 ];
 @NgModule({
