@@ -42,6 +42,10 @@ const routes: Routes = [
     data:{
       role:'ADMIN'
     }
+  },
+  {
+    path: 'chat-room',
+    loadChildren: () => import('./chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
   }
 ];
 @NgModule({
