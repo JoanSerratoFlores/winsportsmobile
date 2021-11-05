@@ -1,6 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
 import { Component } from '@angular/core';
-import { ApiService } from '../services/api.service';
 
 
 @Component({
@@ -9,10 +7,8 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  user = this.api.getCurrentUser();
     
   constructor(
-    private api: ApiService,
 
   ) {}
 

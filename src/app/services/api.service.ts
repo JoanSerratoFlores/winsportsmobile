@@ -76,6 +76,9 @@ export class ApiService {
     }else if(email === 'support@win-sport.egasystems.com'){
       userv = { email, role: 'ADMIN' }
     }
+    else if(email === 'support@winwithsports.com'){
+      userv = { email, role: 'ADMIN' }
+    }
      else {
       userv = { email, role: 'USER' }
     }

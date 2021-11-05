@@ -16,6 +16,8 @@ export class SignUpPage implements OnInit {
   userForm: FormGroup;
   user = this.api.getCurrentUser();
   posts = [];
+  spin = false
+
 
   constructor(
     private api: ApiService,
@@ -39,7 +41,9 @@ export class SignUpPage implements OnInit {
   
   signUp() {
 
-    this.chatserv.signup({email:this.userForm.value.email,password:this.userForm.value.password}).then(res=>{
+    this.spin = true;
+  
+/*     this.chatserv.signup({email:this.userForm.value.email,password:this.userForm.value.password}).then(res=>{
       if(res.user.uid){
         let data = {
           email:this.userForm.value.email,
@@ -50,13 +54,16 @@ export class SignUpPage implements OnInit {
         this.chatserv.saveDetails(data).then(res=>{
         },err=>{
           console.log(err);
+          this.spin = false;
+
         })
       }
     },err=>{
       alert(err.message);
-
       console.log(err);
-    })
+      this.spin = false;
+
+    }) */
 
     this.api.signUp(this.userForm.value.username, this.userForm.value.email, this.userForm.value.password).subscribe(
       async res => {
@@ -65,10 +72,13 @@ export class SignUpPage implements OnInit {
             duration: 3000
           });
           toast.present();
+          this.spin = false;
           this.router.navigateByUrl("/login")
       },
       err => {
         this.showError(err);
+        this.spin = false;
+
       }
     );
   }

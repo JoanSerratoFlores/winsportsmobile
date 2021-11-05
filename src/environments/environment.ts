@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://win-sport.egasystems.com/wp-json'
+  apiUrl:'https://winwithsports.com/wp-json'
 };
 
 /*

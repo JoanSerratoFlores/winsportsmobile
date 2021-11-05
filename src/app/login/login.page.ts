@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   user = this.api.getCurrentUser();
   posts = [];
   spin = false
-  userv = {
+  userv = { 
     email: '',
   }
 
@@ -42,10 +42,11 @@ export class LoginPage implements OnInit {
     this.spin = true;
 
     this.chatserv.loginWithEmail({email:this.userForm.value.username,password:this.userForm.value.password}).then(res=>{
-      console.log(res);
+      console.log(res.user.displayName);
       localStorage.setItem('uid',res.user.uid)
-      if(res.user.uid){
-        this.api.prof(this.userv).subscribe(user => {
+/*       localStorage.setItem('name',res.user.displayName)
+ */      if(res.user.uid){
+/*         this.api.prof(this.userv).subscribe(user => {
           console.log('after login: ', user)
           let role = user['role'];
 
@@ -54,20 +55,24 @@ export class LoginPage implements OnInit {
           } else {
             this.router.navigateByUrl('/tabs/tab1/messages')
           }
-        })
-        this.spin = false;
-        this.chatserv.getDetails({uid:res.user.uid}).subscribe(res=>{
+        }) */
+/*         this.spin = false;
+ */        this.chatserv.getDetails({uid:res.user.uid}).subscribe(res=>{
           console.log(res);
         },err=>{
           console.log(err);
+          this.spin = false;
+
         });
       }
     },err=>{
       alert(err.message)
       console.log(err);
+      this.spin = false;
+
     })
 
-/*     this.api.signIn(this.userForm.value.username, this.userForm.value.password).subscribe(
+    this.api.signIn(this.userForm.value.username, this.userForm.value.password).subscribe(
       userv => {
         console.log("logeado", userv)
         this.api.prof(this.userv).subscribe(user => {
@@ -86,7 +91,7 @@ export class LoginPage implements OnInit {
         this.showError(err);
         this.spin = false;
       }
-    ); */
+    );
   }
 
   async showError(err) {

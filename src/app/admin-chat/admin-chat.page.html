@@ -1,9 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>admin chat</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Admin Chat</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-item>
+        <ion-label>
+            <h2>
+                {{name}}
+            </h2>
+            <p>
+                {{username}}
+            </p>
+        </ion-label>
+    </ion-item>
+    <ion-toolbar>
+        <ion-title>Chats</ion-title>
+    </ion-toolbar>
+    <ion-item lines="none" *ngFor="let user of users" (click)="gotoChat(user.uid,user.displayName)" button>
+        <ion-label>
+            <h2>
+                <b>
+                {{user.displayName}}
+              </b>
+            </h2>
+            <p>
+                {{user.email}}
+            </p>
+        </ion-label>
+    </ion-item>
 </ion-content>
