@@ -111,7 +111,7 @@ export class ApiService {
     );
   }
 
-  getCurrentUser() {
+  getCurrentUser() {  
     return this.user.asObservable();
   }
 
