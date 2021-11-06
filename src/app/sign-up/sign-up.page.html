@@ -55,8 +55,8 @@
             <ion-row class="ion-padding-top">
                 <ion-button style="margin: auto;display: block;width:fit-content;" [disabled]="!userForm.valid" color="maingreen" (click)="signUp()">
                     Register
+                    <ion-spinner *ngIf="spin" name="circles"></ion-spinner>
                 </ion-button>
-                <ion-spinner *ngIf="spin" name="circles"></ion-spinner>
             </ion-row>
         </form>
     </ion-grid>

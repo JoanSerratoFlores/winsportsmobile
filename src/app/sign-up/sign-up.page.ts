@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { ChatService } from '../services/chat.service';
+import firebase from 'firebase/compat/app';
 
 
 @Component({
@@ -24,56 +25,61 @@ export class SignUpPage implements OnInit {
     private fb: FormBuilder,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private router:Router,
-    private chatserv:ChatService
+    private router: Router,
+    private chatserv: ChatService
 
-  ) {    }
+  ) { }
 
   ngOnInit() {
 
     this.userForm = this.fb.group({
       username: ['', Validators.required],
-      email: ['',Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
   }
-  
+
   signUp() {
 
     this.spin = true;
-  
-/*     this.chatserv.signup({email:this.userForm.value.email,password:this.userForm.value.password}).then(res=>{
-      if(res.user.uid){
+
+    this.chatserv.signup({ email: this.userForm.value.email, password: this.userForm.value.password }).then(res => {
+      if (res.user.uid) {
         let data = {
-          email:this.userForm.value.email,
-          password:this.userForm.value.password,
-          name:this.userForm.value.username,
-          uid:res.user.uid
+          email: this.userForm.value.email,
+          password: this.userForm.value.password,
+          displayName: this.userForm.value.username,
+          uid: res.user.uid
         }
-        this.chatserv.saveDetails(data).then(res=>{
-        },err=>{
+        const user = firebase.auth().currentUser;
+
+        user.updateProfile({
+          displayName: data.displayName
+        })
+        this.chatserv.saveDetails(data).then(res => {
+        }, err => {
           console.log(err);
           this.spin = false;
 
         })
       }
-    },err=>{
+    }, err => {
       alert(err.message);
       console.log(err);
       this.spin = false;
 
-    }) */
+    })
 
     this.api.signUp(this.userForm.value.username, this.userForm.value.email, this.userForm.value.password).subscribe(
       async res => {
-          const toast = await this.toastCtrl.create({
-            message: res['message'],
-            duration: 3000
-          });
-          toast.present();
-          this.spin = false;
-          this.router.navigateByUrl("/login")
+        const toast = await this.toastCtrl.create({
+          message: res['message'],
+          duration: 3000
+        });
+        toast.present();
+        this.spin = false;
+        this.router.navigateByUrl("/login")
       },
       err => {
         this.showError(err);

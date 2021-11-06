@@ -6,6 +6,7 @@ import { Platform } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { Storage } from '@ionic/Storage';
+import { ChatService } from '../services/chat.service';
 
 const JWT_KEY = 'myjwtstoragekey';
 const TOKEN_KEY = 'user-access-token'
@@ -26,7 +27,9 @@ export class ApiService {
     private http: HttpClient,
     private storage: Storage,
     private plt: Platform,
-    private router: Router) {
+    private router: Router,
+    private chatserv: ChatService
+    ) {
 
     this.userv = this.authState.asObservable().pipe(
       filter(response => response)
@@ -123,7 +126,8 @@ export class ApiService {
     this.storage.remove(JWT_KEY).then(() => {
       this.user.next(null);
     });
-    this.router.navigateByUrl('/')
+    this.chatserv.signout();
+    this.router.navigateByUrl('/');    
   }
 
   getPosts(page = 1) {

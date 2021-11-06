@@ -1,33 +1,42 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Admin Chat</ion-title>
-    </ion-toolbar>
-</ion-header>
+<ion-grid id="fondo">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Profile</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-<ion-content>
-    <ion-item>
-        <ion-label>
-            <h2>
-                {{name}}
-            </h2>
-            <p>
-                {{username}}
-            </p>
-        </ion-label>
-    </ion-item>
-    <ion-toolbar>
-        <ion-title>Chats</ion-title>
-    </ion-toolbar>
-    <ion-item lines="none" *ngFor="let user of users" (click)="gotoChat(user.uid,user.displayName)" button>
-        <ion-label>
-            <h2>
-                <b>
-                {{user.displayName}}
-              </b>
-            </h2>
-            <p>
-                {{user.email}}
-            </p>
-        </ion-label>
-    </ion-item>
-</ion-content>
+    <ion-content>
+        <ion-item>
+            <ion-label>
+                <h2 id="name">
+                    {{name}}
+                </h2>
+                <p id="username">
+                    {{username}}
+                </p>
+            </ion-label>
+        </ion-item>
+        <ion-toolbar>
+            <ion-title>Chats</ion-title>
+        </ion-toolbar>
+        <ion-item lines="none" *ngFor="let user of users" (click)="gotoChat(user.uid,user.displayName)" button>
+            <ion-label>
+                <h2>
+                    <b id="name">
+                      {{user.displayName}}
+                    </b>
+                </h2>
+                <p id="username">
+                    {{user.email}}
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-content>
+</ion-grid>
+<ion-footer>
+    <ion-grid id="footer">
+        <ion-button (click)="signout()" color="mainorange" fill="clear">
+            Log Out
+        </ion-button>
+    </ion-grid>
+</ion-footer>

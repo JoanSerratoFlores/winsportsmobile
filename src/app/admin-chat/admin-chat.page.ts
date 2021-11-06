@@ -1,3 +1,4 @@
+import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -22,7 +23,7 @@ export class AdminChatPage implements OnInit {
     public fa: AngularFireAuth,
     public fs: AngularFirestore,
     private navc:NavController,
-
+    private api:ApiService
   ) {
 
     this.uid = localStorage.getItem("uid");
@@ -51,6 +52,10 @@ export class AdminChatPage implements OnInit {
     sessionStorage.setItem("name",displayName);
     this.navc.navigateForward("/chat-room")
 
+  }
+
+  signout(){
+    this.api.logout()
   }
 
 

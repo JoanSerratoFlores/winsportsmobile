@@ -1,0 +1,28 @@
+#content {
+    background: url("/assets/images/Win-With-port-d00b_00a1 - copia.png");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    ion-content {
+        --background: #ffffff00;
+    }
+    #You {
+        background: #fabb29;
+        border-radius: 10px 10px 0px 10px;
+    }
+    #messageyou {
+        width: fit-content;
+        margin-left: auto;
+        --background: #ffffff00;
+    }
+    #Other {
+        background: #97c000;
+        border-radius: 10px 10px 10px 0px;
+    }
+    #messageother {
+        width: fit-content;
+        margin-right: auto;
+        --background: #ffffff00;
+    }
+}

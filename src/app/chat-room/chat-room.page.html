@@ -1,48 +1,53 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="maingreen">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>{{name}}</ion-title>
+        <ion-title style="color: white;">{{name}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-grid id="content">
+    <ion-content>
 
-    <div *ngFor="let chat of chats">
-        <ion-item lines="none" *ngIf="chat.uid != uid">
-            <ion-label class="ion-text-left">
-                <p>
-                    {{name}}
-                </p>
-                <h2>
-                    <b>
+        <div *ngFor="let chat of chats">
+            <ion-item lines="none" *ngIf="chat.uid != uid" id="messageother">
+                <ion-label class="ion-text-left" id="Other">
+                    <p style="margin: 5px;">
+                        {{name}}
+                    </p>
+                    <h2 style="margin: 5px;">
+                        <b>
                         {{chat.msg}}
                     </b>
-                </h2>
-            </ion-label>
-        </ion-item>
+                    </h2>
+                </ion-label>
+            </ion-item>
 
-        <ion-item lines="none" *ngIf="chat.uid == uid">
-            <ion-label class="ion-text-right">
-                <p>
-                    You
-                </p>
-                <h2>
-                    <b>
+            <ion-item lines="none" id="messageyou" *ngIf="chat.uid == uid">
+                <ion-label id="You" class="ion-text-right">
+                    <p style="margin: 5px;">
+                        You
+                    </p>
+                    <h2 style="margin: 5px;">
+                        <b>
                         {{chat.msg}}
                     </b>
-                </h2>
-            </ion-label>
-        </ion-item>
-    </div>
+                    </h2>
+                </ion-label>
+            </ion-item>
+        </div>
 
-</ion-content>
+    </ion-content>
 
+</ion-grid>
 <ion-footer>
     <ion-toolbar>
         <ion-item>
-            <ion-input [(ngModel)]="textMsg" placeholder="Type here..." (keyup.enter)="send()"></ion-input>
+            <ion-input [(ngModel)]="textMsg" placeholder="Type here..."></ion-input>
+            <ion-button (click)="send()" expand="block" fill="clear">
+                <ion-icon style="color: #97c000;" name="send-outline"></ion-icon>
+            </ion-button>
         </ion-item>
     </ion-toolbar>
 </ion-footer>

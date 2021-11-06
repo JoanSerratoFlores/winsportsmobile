@@ -1,0 +1,25 @@
+    #fondo {
+        background: url("/assets/images/Win-With-port-d00b_00a1 - copia.png");
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        ion-toolbar {
+            --background: #3880ff00;
+            ion-title {
+                --color: #ffffff;
+            }
+        }
+        ion-content {
+            --background: #3880ff00;
+            ion-item {
+                --background: #3880ff00;
+                #name {
+                    color: #97c000;
+                }
+                #username {
+                    color: #fabb29;
+                }
+            }
+        }
+    }
