@@ -3,13 +3,13 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
         </ion-buttons>
-        <ion-title style="font-family: oswald;color: #edb125;">{{ post?.title.rendered }}</ion-title>
+        <ion-title style="font-family: fantasy;color: white;">{{ post?.title.rendered }}</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div id="background-content">
-        <div style="color: white;" *ngIf="post" class="ion-padding">
+        <div style="font-family: serif;color: white;" *ngIf="post" class="ion-padding">
             <img [src]="post.media_url" [style.width]="'100%'">
             <div [innerHTML]="post.content.rendered" padding></div>
         </div>
